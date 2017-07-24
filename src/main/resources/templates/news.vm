@@ -1,38 +1,55 @@
 <html>
 <body>
-${name}<br>
-##访问属性##
-${user.getName()}
+<pre>
+Hello VM.
 
-<br>
-##遍历 map list##
+## 你看不到我
+
+#*
+这里都看不到
+*#
+
+value1:$!{value1}
+$!{value2}
+${value3}
+
+#foreach ($color in $colors)
+Color $!{foreach.index}/$!{foreach.count}: $!{color}
+#end
+
+#foreach($key in $map.keySet())
+Number $!{foreach.index}/$!{foreach.count}: $!{key} $map.get($key)
+#end
+
 #foreach($kv in $map.entrySet())
-    <br>
-    Number:$!{foreach.index}/$!{foreach.count}:$!{kv.key} ${kv.value}
-#end
-<br>
-#set($title="nowcoder")
-Include:#include("header.vm")##静态包含##
-Parse:#parse("header.vm")##动态包含##
-
-##宏（函数）定义##
-#macro (render_color $color,$index)
-    Color By Macro $index,$color
+Number $!{foreach.index}/$!{foreach.count}: $!{kv.key} $!{kv.value}
 #end
 
-##宏调用##
-    #foreach($color in $colors)
-       <br>#render_color($color,$foreach.index)
-    #end
 
-#set($hello="hello")
-#set($hworld1="$!{hello} world")
-#set($hworld2='$!{hello} world')##单引号表示纯文本##
+User:$!{user.name}
+User:$!{user.getName()}
+
+#set($title = "nowcoder")
+Include: #include("header.vm") <br>
+Parse:#parse("header.vm")
+
+#macro (render_color, $color, $index)
+Color By Macro $index, $color
+#end
+
+#foreach ($color in $colors)
+    #render_color($color, $foreach.index)
+#end
+
+#set($hello = "hello")
+#set($hworld1 = "$!{hello} world")
+#set($hworld2 = '$!{hello} world')
 
 hworld1:$hworld1
 hworld2:$hworld2
 
-<br>
-$colors.size()
+$!{colors.size()}
+
+</pre>
 </body>
 </html>

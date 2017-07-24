@@ -1,9 +1,9 @@
-package com.nowcoder;
+package com.nowcoder.service;
 
 import org.springframework.stereotype.Service;
 
 /**
- * Created by Shirley on 2017/7/11.
+ * Created by nowcoder on 2016/6/26.
  */
 @Service
 public class ToutiaoService {

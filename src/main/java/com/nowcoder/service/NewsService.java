@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Created by nowcoder on 2016/7/2.
+ * Created by Shirley on 2017/7/12.
  */
 @Service
 public class NewsService {
@@ -53,5 +53,10 @@ public class NewsService {
 
     public int updateCommentCount(int id, int count) {
         return newsDAO.updateCommentCount(id, count);
+    }
+
+    public int updateLikeCount(int id,int count){
+        return newsDAO.updateLikeCount(id,count);
+
     }
 }
